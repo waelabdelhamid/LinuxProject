@@ -1,6 +1,6 @@
 #### LinuxProject
 
-This is the documentation of the Project: Linux Server Configuration linked to the [Configuring Linux Web Servers](https://classroom.udacity.com/courses/ud299) course.
+This is the documentation of the Project: Linux Server Configuration linked to the [Configuring Linux Web Servers](https://classroom.udacity.com/courses/ud299) course, which is part of Udacity's Fullstack Developer Nanodegree program.
 
 My Linux Server is Ubuntu Xenial and configured as follows:
 
