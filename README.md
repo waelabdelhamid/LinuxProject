@@ -24,11 +24,11 @@ The installed software via Python package installer: pip as follows:
 
 #### The summary of configurations made:
 
-*  Update all system packages.
+1. Update all system packages.
 
-*  Applying the security rule of Least Privilege, by disable root user remote login, stop logging in with password and use public key instead, finally adding some rules to the firewall.
+2. Applying the security rule of Least Privilege, by disable root user remote login, stop logging in with password and use public key instead, finally adding some rules to the firewall.
 
-*  Configure Apache to handle requests using the WSGI module, by editing the: /etc/apache2/sites-enabled/000-default.conf add the following lines at the end of: `<VirtualHost *:80>`:
+3. Configure Apache to handle requests using the WSGI module, by editing the: /etc/apache2/sites-enabled/000-default.conf add the following lines at the end of: `<VirtualHost *:80>`:
     ```
     <VirtualHost *:80>
       #.
@@ -51,32 +51,32 @@ The installed software via Python package installer: pip as follows:
       </Directory>
     </VirtualHost>
     ```
-*  Configure Postgresql, by creating a new database: catalog as follows:
+4. Configure Postgresql, by creating a new database: catalog as follows:
 
-  Firstly: add a new system user: catalog , and full name: PostgreSQL user:
+    * Firstly: add a new system user: catalog , and full name: PostgreSQL user:
     ```
     sudo adduser catalog
     ```
 
-  Secondly: creating the new database user: catalog & its associated database: catalog:
+    * Secondly: creating the new database user: catalog & its associated database: catalog:
     ```
     sudo su postgres -c 'createuser -dRS catalog'
     sudo su catalog -c 'createdb'
     ```
 
-  Thirdly: assign a password for the created database user: catalog:
+    * Thirdly: assign a password for the created database user: catalog:
     ```
     sudo su - postgres
     psql -U postgres catalog
     ALTER ROLE catalog PASSWORD 'ccatalog';
     ```
 
-  Fourth: creating a database user for `www-data` its the default system user for Apache on Ubuntu:
+    * Fourth: creating a database user for `www-data` its the default system user for Apache on Ubuntu:
     ```
     sudo su postgres -c 'createuser -dRS www-data'
     ```
 
-  Fifth: making the database user `www-data` as a database supper user in order to be able to execute queries on the catalog database:
+    * Fifth: making the database user `www-data` as a database supper user in order to be able to execute queries on the catalog database:
     ```
     sudo su - postgres
     psql -U postgres catalog
@@ -85,6 +85,4 @@ The installed software via Python package installer: pip as follows:
 
 #### The list of third-party services:
 
-*  [xip.io](http://xip.io/) service to get a DNS name that refers to my server's public IP address, for ex.: 18.185.37.190.xip.io resolves to 18.185.37.190
-
-  That needed for set up OAuth for the web application.
+*  [xip.io](http://xip.io/) service to get a DNS name that refers to my server's public IP address, for ex.: 18.185.37.190.xip.io resolves to 18.185.37.190 that needed for set up OAuth for the web application.
